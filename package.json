@@ -1,0 +1,30 @@
+{
+  "name": "virtualjs",
+  "version": "0.0.1",
+  "description": "Virtual DOM",
+  "main": "dist/virtual.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielmadu/virtualjs.git"
+  },
+  "keywords": [
+    "Virtual",
+    "DOM"
+  ],
+  "author": "Daniel Madureira Batista",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielmadu/virtualjs/issues"
+  },
+  "homepage": "https://github.com/danielmadu/virtualjs#readme",
+  "devDependencies": {
+    "rollup": "^0.36.0",
+    "rollup-plugin-babel": "^2.6.1"
+  }
+}
