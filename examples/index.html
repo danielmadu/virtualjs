@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual.js</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.14.0/babel.min.js"></script>
+  <script src="../dist/virtual.js"></script>
+  <script type="text/babel">
+    /** @jsx Virtual.h */
+    console.log(Virtual.version)
+    const A = (
+      <div className="box">
+        <h1>Hello World</h1>
+      </div>
+    )
+
+    Virtual.DOM(<A />, document.querySelector('#root'))
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
