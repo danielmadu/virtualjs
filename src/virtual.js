@@ -1,14 +1,20 @@
 'use strict'
-let Virtual = () => {
-  this.h = (type, props, ...children) => {
+const Virtual = {
+  h: (type, props, ...children) => {
     return { type, props, children }
-  }
-
-  this.createElement = (node) => {
+  },
+  createElement: (node) => {
     if (typeof node === 'string') {
       return document.createTextNode(node)
     }
-    return document.createElement(node.type)
+    const $el = document.createElement(node.type)
+    node.children
+      .map(Virtual.createElement)
+      .forEach($el.appendChild.bind($el))
+    return $el
+  },
+  DOM: (node, $parent) => {
+    $parent.appendChild(Virtual.createElement(node.type))
   }
 }
 
