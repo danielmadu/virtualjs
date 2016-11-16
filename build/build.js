@@ -45,11 +45,16 @@ rollup.rollup({
     ]
   })
   .then(function (bundle) {
-    bundle.write({
-      dest: 'dist/virtual.js',
+    // bundle.write({
+    //   dest: 'dist/virtual.js',
+    //   format: 'umd',
+    //   moduleName: 'Virtual'
+    // })
+    return write('dist/virtual.js', bundle.generate({
       format: 'umd',
+      banner: banner,
       moduleName: 'Virtual'
-    })
+    }).code)
   })
 })
 .catch(logError)
