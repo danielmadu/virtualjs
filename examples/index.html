@@ -8,13 +8,34 @@
   <script type="text/babel">
     /** @jsx Virtual.h */
     console.log(Virtual.version)
-    const A = (
-      <div className="box">
-        <h1>Hello World</h1>
-      </div>
-    )
+    const B = Virtual.createClass({
+      render: () => {
+        const items = [
+          {id: 1, name: 'item 1'},
+          {id: 2, name: 'hello!'}
+        ]
+        return (
+          <ul>
+            {items.map(item =>
+              <li key={item.id}>{item.name}</li>
+            )}
+          </ul>
+        )
+      }
+    })
 
-    Virtual.DOM(<A />, document.querySelector('#root'))
+    const A = Virtual.createClass({
+      render: () => {
+        return (
+          <ul>
+            <li>Oi</li>
+            <li>Oi!</li>
+          </ul>
+        )
+      }
+    })
+
+    Virtual.DOM(<B />, document.querySelector('#root'))
   </script>
 </head>
 <body>

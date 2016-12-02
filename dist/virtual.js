@@ -1,3 +1,8 @@
+/*!
+ * Virtual.js v0.0.2
+ * (c) 2016 DanielMadu
+ * Released under the MIT License.
+ */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -10,24 +15,37 @@ var Virtual$1 = {
       children[_key - 2] = arguments[_key];
     }
 
-    return { type: type, props: props, children: children };
+    if (children.length > 0) {
+      var childs = children.reduce(function (childs, child) {
+        if (Array.isArray(child)) {
+          return childs.concat(child);
+        } else {
+          childs.push(child);
+          return childs;
+        }
+      }, []);
+      return { type: type, props: props, children: childs };
+    } else {
+      return { type: type, props: props };
+    }
+  },
+  createClass: function createClass(options) {
+    return options.render();
   },
   createElement: function createElement(node) {
     if (typeof node === 'string') {
       return document.createTextNode(node);
     }
-    console.log(node);
     var $el = document.createElement(node.type);
-    node.children.map(undefined.createElement).forEach($el.appendChild.bind($el));
+    node.children.map(Virtual$1.createElement).forEach($el.appendChild.bind($el));
     return $el;
   },
   DOM: function DOM(node, $parent) {
-    console.log(node.type);
-    $parent.appendChild(undefined.createElement(node.type));
+    $parent.appendChild(Virtual$1.createElement(node.type));
   }
 };
 
-Virtual$1.version = '0.0.1';
+Virtual$1.version = '0.0.2';
 
 return Virtual$1;
 

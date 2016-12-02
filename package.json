@@ -1,12 +1,13 @@
 {
   "name": "virtualjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Virtual DOM",
   "main": "dist/virtual.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
+    "build": "node build/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
