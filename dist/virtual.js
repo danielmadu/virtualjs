@@ -16,7 +16,15 @@ var Virtual$1 = {
     }
 
     if (children.length > 0) {
-      return { type: type, props: props, children: children };
+      var childs = children.reduce(function (childs, child) {
+        if (Array.isArray(child)) {
+          return childs.concat(child);
+        } else {
+          childs.push(child);
+          return childs;
+        }
+      }, []);
+      return { type: type, props: props, children: childs };
     } else {
       return { type: type, props: props };
     }

@@ -2,7 +2,15 @@
 const Virtual = {
   h: (type, props, ...children) => {
     if (children.length > 0) {
-      return { type, props, children }
+      const childs = children.reduce((childs, child) => {
+        if (Array.isArray(child)) {
+          return childs.concat(child)
+        } else {
+          childs.push(child)
+          return childs
+        }
+      }, [])
+      return { type, props, children: childs }
     } else {
       return { type, props }
     }
